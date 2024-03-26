@@ -1,0 +1,86 @@
+<div class="table-div">
+  <div style="max-width: max-content;">
+    {{! <FromElsewhere @name="actions" /> }}
+
+    <div {{!-- {{on-key "/" this.searchBar}} --}}>
+      <h1>Display Table :-</h1>
+      <br />
+      <div style="display: flex;justify-content:space-between">
+        <div id="search-div" style="display: flex;">
+          <input
+            type="text"
+            id="searchBar"
+            placeholder="search ..."
+            {{!-- {{on "keypress" this.handleEnterSearchButton}} --}}
+            {{!-- {{on "input" this.handleSearchChange}} --}}
+            style="margin-right: 10px;"
+          />
+          <button
+            id="searchBtn"
+            type="button"
+            {{action "handleSearchButton"}}
+          >Search</button>
+        </div>
+        <div><button
+            class="add-btn"
+            {{action "handleAddButton"}}
+            type="button"
+          >Add</button></div>
+        <div><button
+            id="delete-button"
+            type="button"
+            {{action 'handleDeleteButton'}}
+          >Delete</button></div>
+      </div>
+    </div>
+    <br />
+    <table id="marvel">
+      <thead>
+        <tr>
+          <th>Delete</th>
+          {{#each myService.headRow as |key|}}
+            <th>{{key}}</th>
+          {{/each}}
+          <th>Options</th>
+        </tr>
+      </thead>
+      <tbody>
+        {{#each myService.tableData as |item|}}
+          {{!-- <VerticalCollection
+              @items={{this.allData}}
+              @estimateHeight={{this.estimateHeight}}
+              @bufferSize={{this.bufferSize}}
+              @renderAll={{false}}
+              as |item|
+            > --}}
+          <tr
+             {{action 'handleRowClick'}}
+             {{!-- {{change-background}} --}}
+          >
+            <td><input type="checkbox" /></td>
+            {{#each-in item as |key value|}}
+              <td>
+                {{value}}
+              </td>
+            {{/each-in}}
+            <td style="max-width:fit-content">
+              <button
+                id="edit-button"
+                type="submit"
+                {{action 'handleEditButton'}}
+              >Edit</button>
+              <button
+                id="deleete"
+                class="single-delete"
+                type="submit"
+                {{action 'handleSingleDelete'}}
+              >Delete
+              </button>
+            </td>
+          </tr>
+          {{! </VerticalCollection> }}
+        {{/each}}
+      </tbody>
+    </table>
+  </div>
+</div>

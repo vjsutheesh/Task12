@@ -1,0 +1,35 @@
+<div class="table-div">
+  <div
+    style="background-color:#bcfdf0;width:40%;margin:0 200px;border-radius:10px"
+  >
+    <div style="margin: 0 150px;">
+      <h3 style="text-transform: uppercase;">{{route}} the fields :-</h3>
+    </div>
+    <div style="max-width: max-content;margin:0 150px">
+      <form style="display: flex;flex-direction:column;" id="form-data">
+        {{#if myService.isAdd}}
+          {{#each myService.addEdit as |item index|}}
+            <label for="">{{item}} :</label>
+            <input type="text" id={{item}} />
+            <br />
+          {{/each}}
+        {{else}}
+          {{#each-in myService.addEdit as |key value|}}
+            <label for="">{{key}} :</label>
+            <input type="text" id={{key}} value={{value}} />
+            <br />
+          {{/each-in}}
+        {{/if}}
+        <div style="max-width:inherit;align-self:center;">
+          <button
+            id="save-button"
+            type="submit"
+            {{action "handleUpdatebutton"}}
+            style="max-width: fit-content;text-transform: uppercase;"
+          >{{route}}</button>
+        </div>
+      </form>
+      <br />
+    </div>
+  </div>
+</div>

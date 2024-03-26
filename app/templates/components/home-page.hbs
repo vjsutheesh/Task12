@@ -1,0 +1,12 @@
+{{#if myService.userDetails}}
+  <div style="align-items: center;">
+  <h2>User History :</h2>
+  {{#each myService.userDetails as |log|}}
+    <div class="home-history">
+      <h4>{{log.name}}</h4>
+      <p>Logged as : {{log.auth}}</p>
+    </div>
+    <br />
+  {{/each}}
+</div>
+{{/if}}

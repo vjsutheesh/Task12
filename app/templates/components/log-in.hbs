@@ -1,0 +1,31 @@
+<div style="max-width: 100%;background-color:#bcfdf0;height:100vh">
+  {{!-- {{#each this.flashMessages.queue as |flash|}}
+    <FlashMessage @flash={{flash}} @messageStylePrefix="special-alert-" />
+  {{/each}} --}}
+  <br />
+  <div class="login" style="max-width:40%;margin:0 auto;border-radius:10px;">
+    <div>
+      <h1>Welcome to your workspace</h1>
+    </div>
+    <div>
+      <form style="display: flex;flex-direction:column;" id="form-data">
+        <label for="username">Username :</label>
+        <input type="text" id="username" name="username" />
+        <br />
+        <label for="password">Password :</label>
+        <input type="text" id="password" name="password" />
+        <br />
+        {{#power-select
+          options=users
+          selected=user
+          onchange=(action "handleSelectionChange")
+          as |option|
+        }}
+          {{option}}
+        {{/power-select}}
+        <br />
+        <button class="logbutton" type="submit" {{action "handleLoginButton"}}>Log in</button>
+      </form>
+    </div>
+  </div>
+</div>

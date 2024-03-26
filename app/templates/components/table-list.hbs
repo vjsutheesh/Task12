@@ -1,0 +1,14 @@
+{{#each myService.tableList as |item|}}
+  <div class="table-container" style="margin-left:auto;margin-right:auto;">
+    <div id="tableName"><h2>{{item.TableName}}</h2></div>
+    <div id="viewButton">
+      <button
+        class="view-btn"
+        value={{item.TableName}}
+        type="button"
+        {{action "handleViewButton"}}
+      >View table</button>
+    </div>
+  </div>
+  <br />
+{{/each}}
